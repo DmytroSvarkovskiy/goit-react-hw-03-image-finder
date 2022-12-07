@@ -1,5 +1,4 @@
 // import axios from 'axios';
-// import { ThreeDots } from 'react-loader-spinner';
 import { Searchbar } from '../Searchbar/Searchbar';
 import { Button } from '../Button/Button';
 import { ImageGallery } from '../ImageGallery/ImageGallery';
