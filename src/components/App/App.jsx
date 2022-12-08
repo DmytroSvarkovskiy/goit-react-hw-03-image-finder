@@ -70,11 +70,6 @@ export class App extends Component {
       this.setState({ loaderVisible: false });
     }
   };
-  closeModal = e => {
-    if (e.currentTarget === e.target) {
-      this.togleModal();
-    }
-  };
 
   render() {
     const { totalResult, searchResults, modalVisible, loaderVisible } =
@@ -87,7 +82,7 @@ export class App extends Component {
         {modalVisible && (
           <Modal
             dataImage={this.state.modalData}
-            closeModal={this.closeModal}
+            closeModal={this.togleModal}
           />
         )}
         <ImageGallery
