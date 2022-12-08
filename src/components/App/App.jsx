@@ -14,36 +14,24 @@ export class App extends Component {
     modalVisible: false,
     totalResult: null,
     searchResults: [],
-    currentPage: 2,
-    searchName: 'top',
+    currentPage: 1,
+    searchName: 'cars',
     loaderVisible: false,
   };
-  // fetch = () => {
-  //   const url = `https://pixabay.com/api/?q=${this.state.searchName}&page=${this.state.currentPage}&key=30629726-597c78df0089c177162f75c58&image_type=photo&orientation=horizontal&per_page=12`;
-  //   fetch(url)
-  //     .then(res => res.json())
-  //     .then(console.log);
-  // };
+
   getImage = async () => {
     const apiSearch = `https://pixabay.com/api/?q=${this.state.searchName}&page=${this.state.currentPage}&key=30629726-597c78df0089c177162f75c58&image_type=photo&orientation=horizontal&per_page=12`;
-    this.setState({
-      loaderVisible: true,
-    });
     try {
       const response = await axios.get(apiSearch);
-      console.log(response);
-      return response.data.hits;
+      this.setState({ searchResults: response.data.hits });
     } catch (error) {
-      console.log(error.message);
+      console.error(error);
     }
   };
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.searchResults !== this.state.searchResults) {
-      this.setState({ searchResults: this.getImage() });
+    if (prevState !== this.state) {
+      this.getImage();
     }
-    this.setState({
-      loaderVisible: false,
-    });
   }
 
   render() {
