@@ -7,7 +7,7 @@ import {
   Label,
 } from './Searchbar.styled';
 import { BiSearch } from 'react-icons/bi';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 const initialValues = {
   search: '',
 };
