@@ -13,9 +13,13 @@ const initialValues = {
 };
 
 export const Searchbar = ({ onSubmit }) => {
+  const submitSearch = (value, { resetForm }) => {
+    onSubmit(value.search);
+    resetForm();
+  };
   return (
     <SearchbarHeader>
-      <Formik initialValues={initialValues} onSubmit={onSubmit}>
+      <Formik initialValues={initialValues} onSubmit={submitSearch}>
         <FormWr>
           <Button type="submit">
             <BiSearch />
