@@ -15,7 +15,7 @@ export class App extends Component {
     totalResult: null,
     searchResults: [],
     currentPage: 1,
-    searchName: 'cars',
+    searchName: 'pig',
     loaderVisible: false,
   };
 
@@ -28,7 +28,7 @@ export class App extends Component {
       console.error(error);
     }
   };
-  componentDidUpdate(prevProps, prevState) {
+  componentDidMount(prevProps, prevState) {
     if (prevState !== this.state) {
       this.getImage();
     }
