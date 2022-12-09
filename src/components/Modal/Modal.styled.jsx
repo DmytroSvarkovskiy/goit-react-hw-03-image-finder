@@ -4,13 +4,13 @@ export const Overlay = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
+  overflow-y: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 1200;
-  overflow-y: hidden;
 `;
 export const ModalWindow = styled.div`
   position: absolute;

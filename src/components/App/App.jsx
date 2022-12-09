@@ -9,7 +9,7 @@ import { Component } from 'react';
 import { GlobalStyle } from 'components/GlobalStyle';
 import { Loader } from 'components/Loader/Loader';
 import { Modal } from 'components/Modal/Modal';
-
+import { CoolPage } from '../ScrollToTop/ScrollToTop';
 export class App extends Component {
   state = {
     modalVisible: false,
@@ -115,6 +115,7 @@ export class App extends Component {
           <Button onClick={this.loadMoreClick} />
         )}
         <ToastContainer autoClose={3000} />
+        <CoolPage />
       </Wrapper>
     );
   }
