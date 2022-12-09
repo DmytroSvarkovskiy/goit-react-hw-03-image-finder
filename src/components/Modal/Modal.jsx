@@ -4,6 +4,13 @@ import { Component } from 'react';
 import { Overlay, ModalWindow } from './Modal.styled';
 const modalRoot = document.querySelector('#modal-root');
 export class Modal extends Component {
+  static propTypes = {
+    closeModal: PropTypes.func.isRequired,
+    dataImage: PropTypes.shape({
+      src: PropTypes.string.isRequired,
+      alt: PropTypes.string.isRequired,
+    }),
+  };
   componentDidMount() {
     window.addEventListener('keydown', this.handleEscpClick);
   }

@@ -21,6 +21,7 @@ export class App extends Component {
     modalData: {},
     error: false,
   };
+
   componentDidUpdate(_, prevState) {
     if (
       prevState.searchName !== this.state.searchName ||
@@ -29,6 +30,7 @@ export class App extends Component {
       this.getImage();
     }
   }
+
   fetchRes = async () => {
     const response = await fetchApi(
       this.state.searchName,
@@ -42,7 +44,8 @@ export class App extends Component {
     }
     return response;
   };
-  findImage = async word => {
+
+  findImage = word => {
     this.setState({ error: false });
     if (this.state.searchName !== word) {
       this.setState({ searchName: word });
@@ -50,9 +53,11 @@ export class App extends Component {
       this.setState({ searchResults: [] });
     }
   };
+
   togleModal = () => {
     this.setState({ modalVisible: !this.state.modalVisible });
   };
+
   onImageClick = e => {
     this.togleModal();
     const currentElId = Number(e.target.id);
@@ -84,8 +89,14 @@ export class App extends Component {
   };
 
   render() {
-    const { error, totalResult, searchResults, modalVisible, loaderVisible } =
-      this.state;
+    const {
+      error,
+      modalData,
+      totalResult,
+      searchResults,
+      modalVisible,
+      loaderVisible,
+    } = this.state;
     const totalPages = Math.ceil(totalResult / searchResults.length);
     return (
       <Wrapper>
@@ -93,10 +104,7 @@ export class App extends Component {
         <Searchbar onSubmit={this.findImage} />
         {error && <Error>Something went wrong, please try again</Error>}
         {modalVisible && (
-          <Modal
-            dataImage={this.state.modalData}
-            closeModal={this.togleModal}
-          />
+          <Modal dataImage={modalData} closeModal={this.togleModal} />
         )}
         <ImageGallery
           searchResults={searchResults}
