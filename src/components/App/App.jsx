@@ -104,7 +104,7 @@ export class App extends Component {
         <ImageGallery
           searchResults={searchResults}
           lookBigImg={this.onImageClick}
-        ></ImageGallery>
+        />
         {loaderVisible && <Loader />}
         {searchResults.length !== 0 && totalPages !== 1 && (
           <Button onClick={this.loadMoreClick} />
