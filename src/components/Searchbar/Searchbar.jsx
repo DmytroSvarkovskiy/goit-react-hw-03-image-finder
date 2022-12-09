@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import {
   Input,
@@ -39,6 +40,6 @@ export const Searchbar = ({ onSubmit }) => {
     </SearchbarHeader>
   );
 };
-// Searchbar.propTypes = {
-//   onSubmit: PropTypes.func.isRequired,
-// };
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};

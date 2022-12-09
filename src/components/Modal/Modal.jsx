@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import { Component } from 'react';
 import { Overlay, ModalWindow } from './Modal.styled';
