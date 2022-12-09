@@ -1,5 +1,5 @@
 import axios from 'axios';
-// import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { Searchbar } from '../Searchbar/Searchbar';
@@ -35,6 +35,11 @@ export class App extends Component {
       this.setState({ currentPage: 1 });
       this.setState({ searchResults: [] });
     }
+    this.setState(prevState => console.log(prevState));
+
+    this.state.totalResult === 0
+      ? toast.error("Sorry, we didn't find anything")
+      : toast.success(`great, we found ${this.state.totalResult} images`);
   };
   togleModal = () => {
     this.setState({ modalVisible: !this.state.modalVisible });
@@ -93,6 +98,7 @@ export class App extends Component {
         {searchResults.length !== 0 && totalPages !== 1 && (
           <Button onClick={this.loadMoreClick} />
         )}
+        <ToastContainer position="top-center" autoClose={4000} />
       </Wrapper>
     );
   }
