@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Searchbar } from '../Searchbar/Searchbar';
 import { Button } from '../Button/Button';
 import { ImageGallery } from '../ImageGallery/ImageGallery';
-import { Wrapper, Error } from './App.styled';
+import { Wrapper } from './App.styled';
 import { Component } from 'react';
 import { GlobalStyle } from 'components/GlobalStyle';
 import { Loader } from 'components/Loader/Loader';
@@ -19,7 +19,6 @@ export class App extends Component {
     searchName: '',
     loaderVisible: false,
     modalData: {},
-    error: false,
   };
 
   componentDidUpdate(_, prevState) {
@@ -48,9 +47,7 @@ export class App extends Component {
   findImage = word => {
     this.setState({ error: false });
     if (this.state.searchName !== word) {
-      this.setState({ searchName: word });
-      this.setState({ currentPage: 1 });
-      this.setState({ searchResults: [] });
+      this.setState({ searchName: word, currentPage: 1, searchResults: [] });
     }
   };
 
@@ -82,7 +79,7 @@ export class App extends Component {
         searchResults: [...prevState.searchResults, ...response.hits],
       }));
     } catch {
-      this.setState({ error: true });
+      toast.error('Something went wrong, please try again');
     } finally {
       this.setState({ loaderVisible: false });
     }
@@ -90,7 +87,6 @@ export class App extends Component {
 
   render() {
     const {
-      error,
       modalData,
       totalResult,
       searchResults,
@@ -102,7 +98,6 @@ export class App extends Component {
       <Wrapper>
         <GlobalStyle />
         <Searchbar onSubmit={this.findImage} />
-        {error && <Error>Something went wrong, please try again</Error>}
         {modalVisible && (
           <Modal dataImage={modalData} closeModal={this.togleModal} />
         )}
